@@ -6,7 +6,11 @@ using THSDotNetCore.ConsoleApp;
 Console.WriteLine("Hello, World!");
 AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Read();
-adoDotNetExample.Create("hello", "hello", "hello");
+//adoDotNetExample.Create("hello", "hello", "hello");
+//adoDotNetExample.Update(1, "title 1", "author 1", "content 1");
+//adoDotNetExample.Delete(15 );
+adoDotNetExample.Edit(15);
+adoDotNetExample.Edit(1);
 Console.ReadKey();
 
 
