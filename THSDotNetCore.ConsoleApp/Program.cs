@@ -9,8 +9,10 @@ AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Create("hello", "hello", "hello");
 //adoDotNetExample.Update(1, "title 1", "author 1", "content 1");
 //adoDotNetExample.Delete(15 );
-adoDotNetExample.Edit(15);
-adoDotNetExample.Edit(1);
+//adoDotNetExample.Edit(15);
+//adoDotNetExample.Edit(1);
+DapperExample dapperExample = new DapperExample();
+dapperExample.Run();
 Console.ReadKey();
 
 
