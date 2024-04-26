@@ -1,5 +1,4 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using DotNetTrainingBatch4.ConsoleApp.EFCoreExamples;
 using System.Data;
 using System.Data.SqlClient;
 using THSDotNetCore.ConsoleApp;
@@ -12,14 +11,8 @@ AdoDotNetExample adoDotNetExample = new AdoDotNetExample();
 //adoDotNetExample.Delete(15 );
 //adoDotNetExample.Edit(15);
 //adoDotNetExample.Edit(1);
-
-//DapperExample dapperExample = new DapperExample();
-//dapperExample.Run();
-
-EFCoreExample eFCoreExample = new EFCoreExample();
-eFCoreExample.Run();
-
-
+DapperExample dapperExample = new DapperExample();
+dapperExample.Run();
 Console.ReadKey();
 
 
