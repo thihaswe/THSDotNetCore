@@ -7,48 +7,50 @@ using System.Linq;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+using THSDotNetCore.ConsoleApp.Dtos;
+using THSDotNetCore.ConsoleApp.Services;
 
-namespace THSDotNetCore.ConsoleApp
+namespace THSDotNetCore.ConsoleApp.DapperExamples
 {
     internal class DapperExample
     {
         public void Run()
         {
-            //Read();
+            Read();
             //Edit(1);
             //Edit(22);
             //Create("title", "author", "content");
             //Update(1, "superman", "spiderman", "ironman");
-            Delete(14);
+           // Delete(17);
 
         }
-        
-        private void Read() 
+
+        private void Read()
         {
             using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
             //            using (IDbConnection db1 = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString)
             //            {            
             //                db1.Open();
             //            } 
-        List<BlogDto> lst = db.Query<BlogDto>("select * from tbl_blog").ToList();
+            List<BlogDto> lst = db.Query<BlogDto>("select * from tbl_blog").ToList();
 
-            foreach (BlogDto item in lst) 
-            { 
+            foreach (BlogDto item in lst)
+            {
                 Console.WriteLine(item.BlogId);
                 Console.WriteLine(item.BlogTitle);
                 Console.WriteLine(item.BlogAuthor);
                 Console.WriteLine(item.BlogContent);
                 Console.WriteLine("----------------");
-        
+
             }
-             
+
         }
 
         private void Edit(int id)
         {
             using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-           var item =  db.Query<BlogDto>("select * from tbl_blog where blogid = @BlogId", new BlogDto { BlogId = id }).FirstOrDefault();
-            if(item is null) 
+            var item = db.Query<BlogDto>("select * from tbl_blog where blogid = @BlogId", new BlogDto { BlogId = id }).FirstOrDefault();
+            if (item is null)
             {
                 Console.Write("no data found");
                 return;
@@ -62,14 +64,14 @@ namespace THSDotNetCore.ConsoleApp
 
         }
 
-        private void Create(string title,string author,string content)
+        private void Create(string title, string author, string content)
         {
 
             var item = new BlogDto
             {
                 BlogTitle = title,
                 BlogAuthor = author,
-                BlogContent = content   
+                BlogContent = content
 
             };
             using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
@@ -81,13 +83,13 @@ INSERT INTO [dbo].[Tbl_Blog]
      VALUES
            (@blogTitle,@blogAuthor,@blogTitle)";
 
-          int result =   db.Execute(query, item);
+            int result = db.Execute(query, item);
             string message = result > 0 ? "saving successful" : "saving failed";
             Console.WriteLine(message);
 
         }
 
-        private void Update(int id,string title, string author, string content)
+        private void Update(int id, string title, string author, string content)
         {
 
             var item = new BlogDto
@@ -114,7 +116,7 @@ INSERT INTO [dbo].[Tbl_Blog]
 
         }
 
-        private void Delete(int id) 
+        private void Delete(int id)
 
         {
             using IDbConnection db = new SqlConnection(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
@@ -125,7 +127,7 @@ INSERT INTO [dbo].[Tbl_Blog]
                 BlogId = id,
             };
 
-          int result =   db.Execute(query, item);
+            int result = db.Execute(query, item);
             string message = result > 0 ? "delete successful" : "delete failed";
             Console.WriteLine(message);
 
@@ -134,6 +136,6 @@ INSERT INTO [dbo].[Tbl_Blog]
 
 
 
-   
-   
+
+
 }

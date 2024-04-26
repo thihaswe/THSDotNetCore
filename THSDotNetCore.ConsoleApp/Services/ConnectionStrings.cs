@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace THSDotNetCore.ConsoleApp
+namespace THSDotNetCore.ConsoleApp.Services
 {
     internal static class ConnectionStrings
     {
@@ -14,7 +14,8 @@ namespace THSDotNetCore.ConsoleApp
             DataSource = ".",
             InitialCatalog = "DotNetTrainingBatch4",
             UserID = "sa",
-            Password = "sa@123"
+            Password = "sa@123",
+            TrustServerCertificate = true
         };
     }
 }
