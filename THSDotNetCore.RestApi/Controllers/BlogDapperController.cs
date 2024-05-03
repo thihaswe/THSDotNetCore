@@ -80,6 +80,8 @@ INSERT INTO [dbo].[Tbl_Blog]
             string message = result > 0 ? "update successful" : "update failed";
             return Ok(message);
         }
+
+
         [HttpPatch("{id}")]
         public IActionResult PatchBlog(int id,BlogModel blog)
         {
